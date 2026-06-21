@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self' https://fonts.gstatic.com; connect-src https://fonts.googleapis.com https://fonts.gstatic.com">
+  <title>Zephon</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- ====== SIDEBAR ====== -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#brandGrad)" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <defs>
+              <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#22d3ee" />
+              </linearGradient>
+            </defs>
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+        </div>
+        <span class="brand-name">Zephon</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="module-tab active" data-module="backup">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          </svg>
+          <span>Backup</span>
+        </button>
+        <button class="module-tab" data-module="encrypt">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="11" width="18" height="11" rx="2" />
+            <path d="M7 11V7a5 5 0 0110 0v4" />
+          </svg>
+          <span>Encrypt</span>
+        </button>
+        <button class="module-tab" data-module="compress">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="4 14 10 14 10 20" />
+            <polyline points="20 10 14 10 14 4" />
+            <line x1="14" y1="10" x2="21" y2="3" />
+            <line x1="3" y1="21" x2="10" y2="14" />
+          </svg>
+          <span>Compress</span>
+        </button>
+        <button class="module-tab" data-module="restore">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+          </svg>
+          <span>Restore</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="shield-badge" id="shield-status">
+          <div class="shield-dot inactive"></div>
+          <span>Shield Inactive</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====== MAIN AREA ====== -->
+    <div class="main-area">
+
+      <header class="header">
+        <div class="header-left">
+          <h1 id="page-title">Automated Backup</h1>
+        </div>
+        <div class="header-right">
+          <div class="status-pills">
+            <span id="source-display" class="status-pill" title="Source path">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+              </svg>
+              Source: —
+            </span>
+            <span id="target-display" class="status-pill" title="Target path">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="7" width="20" height="14" rx="2" />
+                <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+              </svg>
+              Target: —
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <main class="main-content">
+
+        <!-- ====== BACKUP MODULE ====== -->
+        <section id="module-backup" class="module-panel active">
+          <div class="backup-layout">
+
+            <div class="source-list-col">
+              <div class="card" style="height: 100%; display: flex; flex-direction: column;">
+                <div class="card-header" style="justify-content: space-between;">
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="3" />
+                      <path
+                        d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1.08z" />
+                    </svg>
+                    <span>Backup</span>
+                  </div>
+                  <div style="display: flex; gap: 4px;">
+                    <button id="btn-add-source-folder" class="btn btn-secondary" style="padding: 4px; height: auto;"
+                      title="Add Folder">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M20 5H9l-2-2H2v18h20V5z" />
+                        <line x1="12" y1="9" x2="12" y2="17" />
+                        <line x1="8" y1="13" x2="16" y2="13" />
+                      </svg>
+                    </button>
+                    <button id="btn-add-source-file" class="btn btn-secondary" style="padding: 4px; height: auto;"
+                      title="Add File">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="12" y1="18" x2="12" y2="12" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <div class="card-body"
+                  style="flex: 1; display: flex; flex-direction: column; overflow: hidden; padding: 0;">
+                  <div id="source-list" class="folder-list-ui" style="flex: 1; overflow-y: auto; padding: 8px;"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="config-col">
+              <div id="folder-config-area" style="display: none; flex-direction: column; gap: 16px;">
+
+
+                <div class="card">
+                  <div class="card-header">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z" />
+                    </svg>
+                    <span>Target Destination</span>
+                  </div>
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <label for="target-dir">Target Destination</label>
+                      <p class="field-hint">Where backups are saved (USB drive or local path)</p>
+                      <div class="path-row">
+                        <input type="text" id="target-dir" placeholder="Choose a folder or paste its path..."
+                          spellcheck="false">
+                        <button id="btn-target" class="btn btn-secondary">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                          </svg>
+                          Browse
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <rect x="2" y="7" width="20" height="14" rx="2" />
+                      <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                    </svg>
+                    <span>USB Hardware Lock</span>
+                  </div>
+                  <div class="card-body">
+                    <div class="form-group">
+                      <div id="usb-device-display" class="usb-device-card">
+                        <div class="usb-status">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" opacity="0.5">
+                            <rect x="2" y="7" width="20" height="14" rx="2" />
+                            <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+                          </svg>
+                          No USB device detected at target path
+                        </div>
+                      </div>
+                      <div id="usb-registration-actions">
+                        <button id="btn-register-usb" class="btn btn-primary" style="display:none">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                          </svg>
+                          Register USB
+                        </button>
+                        <button id="btn-unregister-usb" class="btn btn-danger" style="display:none">Unregister
+                          USB</button>
+                      </div>
+                    </div>
+                    <div id="usb-automation-options">
+                      <label class="toggle-row">
+                        <input type="checkbox" id="toggle-autobackup" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Auto-backup</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                    <span>Security &amp; Pipeline</span>
+                  </div>
+                  <div class="card-body">
+
+                    <div class="form-group">
+                      <label class="toggle-row">
+                        <input type="checkbox" id="toggle-compression" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Enable compression</span>
+                      </label>
+                      <label class="toggle-row">
+                        <input type="checkbox" id="toggle-encryption" checked>
+                        <span class="toggle-slider"></span>
+                        <span class="toggle-label">Enable encryption</span>
+                      </label>
+                    </div>
+
+                    <div class="form-group" id="password-group">
+                      <label for="password">Encryption Password</label>
+                      <p class="field-hint">Required for this folder when encryption is enabled</p>
+                      <div class="password-row">
+                        <input type="password" id="password" placeholder="Enter passphrase for this folder"
+                          style="width: 100%;">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="empty-folder-state" id="empty-folder-state"
+                style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px; border: 1px dashed var(--border-subtle); border-radius: var(--radius-lg);">
+                <p>Select a folder above to configure its backup destination and settings.</p>
+              </div>
+
+              <div class="form-actions" style="margin-top: auto; padding-top: 16px;">
+                <button id="btn-activate" class="btn btn-activate" style="flex: 1">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                  Activate
+                </button>
+                <button id="btn-deactivate" class="btn btn-danger" style="flex: 1" disabled>Deactivate</button>
+              </div>
+            </div>
+
+            <div class="log-section">
+              <div class="card card-log">
+                <div class="card-header">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                  </svg>
+                  <span style="color: var(--danger);">logs</span>
+                  <button id="btn-clear-log" class="btn-clear">Clear</button>
+                </div>
+                <div class="log-container" id="log-container">
+                  <div class="log-empty">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                      opacity="0.3">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+                    </svg>
+                    <p>No activity yet</p>
+                    <p class="log-empty-sub">Configure and activate the shield to begin</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ====== ENCRYPT MODULE ====== -->
+        <section id="module-encrypt" class="module-panel">
+          <div class="standalone-panel">
+            <div class="card">
+              <div class="card-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" />
+                </svg>
+                <span>Encrypt File or Folder</span>
+              </div>
+              <div class="card-body">
+                <p class="module-desc">Encrypt a file or entire folder with AES-256-CBC. Output is a <code>.vault</code>
+                  file inside the chosen folder.</p>
+                <div class="form-group">
+                  <label for="encrypt-file">Source File or Folder</label>
+                  <div class="path-row">
+                    <input type="text" id="encrypt-file" placeholder="Select or paste file/folder path..."
+                      spellcheck="false">
+                    <button id="btn-encrypt-sel-file" class="btn btn-secondary" title="Select a file">File</button>
+                    <button id="btn-encrypt-sel-dir" class="btn btn-secondary" title="Select a folder">Folder</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="encrypt-password">Encryption Password</label>
+                  <input type="password" id="encrypt-password" placeholder="Enter passphrase">
+                </div>
+                <div class="form-group">
+                  <label for="encrypt-output">Output Folder <span class="optional">(optional)</span></label>
+                  <div class="path-row">
+                    <input type="text" id="encrypt-output" placeholder="Leave blank to save next to source..."
+                      spellcheck="false" readonly>
+                    <button id="btn-encrypt-out" class="btn btn-secondary">Browse</button>
+                  </div>
+                </div>
+                <button id="btn-encrypt-go" class="btn btn-primary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="11" width="18" height="11" rx="2" />
+                    <path d="M7 11V7a5 5 0 0110 0v4" />
+                  </svg>
+                  Encrypt
+                </button>
+                <div id="encrypt-result" class="result-msg"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====== COMPRESS MODULE ====== -->
+        <section id="module-compress" class="module-panel">
+          <div class="standalone-panel">
+            <div class="card">
+              <div class="card-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="4 14 10 14 10 20" />
+                  <polyline points="20 10 14 10 14 4" />
+                  <line x1="14" y1="10" x2="21" y2="3" />
+                  <line x1="3" y1="21" x2="10" y2="14" />
+                </svg>
+                <span>Compress File or Folder</span>
+              </div>
+              <div class="card-body">
+                <p class="module-desc">Compress a file (Gzip) or entire folder (tar.gz). No encryption applied.</p>
+                <div class="form-group">
+                  <label for="compress-file">Source File or Folder</label>
+                  <div class="path-row">
+                    <input type="text" id="compress-file" placeholder="Select or paste file/folder path..."
+                      spellcheck="false">
+                    <button id="btn-compress-sel-file" class="btn btn-secondary" title="Select a file">File</button>
+                    <button id="btn-compress-sel-dir" class="btn btn-secondary" title="Select a folder">Folder</button>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="compress-output">Output Folder <span class="optional">(optional)</span></label>
+                  <div class="path-row">
+                    <input type="text" id="compress-output" placeholder="Leave blank to save next to source..."
+                      spellcheck="false" readonly>
+                    <button id="btn-compress-out" class="btn btn-secondary">Browse</button>
+                  </div>
+                </div>
+                <button id="btn-compress-go" class="btn btn-primary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="4 14 10 14 10 20" />
+                    <polyline points="20 10 14 10 14 4" />
+                    <line x1="14" y1="10" x2="21" y2="3" />
+                    <line x1="3" y1="21" x2="10" y2="14" />
+                  </svg>
+                  Compress
+                </button>
+                <div id="compress-result" class="result-msg"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ====== RESTORE MODULE ====== -->
+        <section id="module-restore" class="module-panel">
+          <div class="standalone-panel">
+            <div class="card">
+              <div class="card-header">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Decrypt &amp; Decompress</span>
+              </div>
+              <div class="card-body">
+                <p class="module-desc">Select a <code>.vault</code> or <code>.gz</code> file to restore. Encrypted files
+                  require the decryption password.</p>
+                <div class="form-group">
+                  <label for="restore-file">Source File (.vault or .gz)</label>
+                  <div class="path-row">
+                    <input type="text" id="restore-file" placeholder="Select .vault or .gz file..." spellcheck="false">
+                    <button id="btn-restore-sel" class="btn btn-secondary">Browse</button>
+                  </div>
+                </div>
+                <div class="form-group" id="restore-pwd-group">
+                  <label for="restore-password">Decryption Password</label>
+                  <p class="field-hint">Only required for .vault files</p>
+                  <input type="password" id="restore-password" placeholder="Enter passphrase">
+                </div>
+                <div class="form-group">
+                  <label for="restore-output">Output Directory</label>
+                  <div class="path-row">
+                    <input type="text" id="restore-output" placeholder="Select destination folder..." spellcheck="false"
+                      readonly>
+                    <button id="btn-restore-out" class="btn btn-secondary">Browse</button>
+                  </div>
+                </div>
+                <button id="btn-restore-go" class="btn btn-primary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
+                    <polyline points="7 10 12 15 17 10" />
+                    <line x1="12" y1="15" x2="12" y2="3" />
+                  </svg>
+                  Decrypt &amp; Decompress
+                </button>
+                <div id="restore-result" class="result-msg"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ====== SYNC PROMPT MODAL ====== -->
+  <div id="sync-modal" class="modal-overlay hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 01-3.46 0" />
+        </svg>
+        Backup Ready
+      </div>
+      <div class="modal-body">
+        <p id="modal-message">Signature-matched USB detected.</p>
+        <p id="modal-changes" class="modal-changes"></p>
+      </div>
+      <div class="modal-actions">
+        <button id="modal-btn-no" class="btn btn-secondary">Dismiss</button>
+        <button id="modal-btn-yes" class="btn btn-primary">Start Syncing</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden status bar elements used by app.js (display:none, logic-only) -->
+  <footer class="status-bar" id="status-bar" style="display:none;">
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
