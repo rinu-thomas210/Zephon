@@ -8,16 +8,16 @@ Think of Zephon as your personal **file shield**: you point it at folders or fil
 
 | Feature | Description |
 |---|---|
-| ** Automated Backup** | Real-time file system monitoring with automatic sync on change detection |
-| ** AES-256-CBC Encryption** | Military-grade encryption for all backed-up files and folders |
-| ** Gzip / tar.gz Compression** | Reduces backup size with gzip (files) and tar.gz (folders) |
-| ** USB Hardware Lock** | Register a specific USB drive by hardware signature (VID/PID/Serial) |
-| ** Plug & Play Auto-Backup** | Automatically starts backup when your registered USB drive is plugged in |
-| ** Multi-Source Support** | Monitor multiple files and folders simultaneously, each with independent settings |
-| ** Incremental Sync** | Manifest-based change detection — only syncs files that have actually changed |
-| ** Decrypt & Restore** | Built-in module to decrypt `.vault` files and decompress `.gz` / `.tar.gz` archives |
-| ** Real-Time Activity Log** | Live log panel showing every operation, warning, and error |
-| ** Persistent Configuration** | All settings are saved automatically and restored on next launch |
+|  Automated Backup | Real-time file system monitoring with automatic sync on change detection |
+|  AES-256-CBC Encryption | Military-grade encryption for all backed-up files and folders |
+|  Gzip / tar.gz Compression | Reduces backup size with gzip (files) and tar.gz (folders) |
+|  USB Hardware Lock | Register a specific USB drive by hardware signature (VID/PID/Serial) |
+|  Plug & Play Auto-Backup | Automatically starts backup when your registered USB drive is plugged in |
+|  Multi-Source Support | Monitor multiple files and folders simultaneously, each with independent settings |
+|  Incremental Sync | Manifest-based change detection — only syncs files that have actually changed |
+|  Decrypt & Restore | Built-in module to decrypt `.vault` files and decompress `.gz` / `.tar.gz` archives |
+|  Real-Time Activity Log | Live log panel showing every operation, warning, and error |
+|  Persistent Configuration | All settings are saved automatically and restored on next launch |
 
 ---
 
