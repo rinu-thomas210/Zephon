@@ -4,24 +4,24 @@ Think of Zephon as your personal **file shield**: you point it at folders or fil
 
 ---
 
-## ✨ Features
+##  Features
 
 | Feature | Description |
 |---|---|
-| **🛡️ Automated Backup** | Real-time file system monitoring with automatic sync on change detection |
-| **🔒 AES-256-CBC Encryption** | Military-grade encryption for all backed-up files and folders |
-| **📦 Gzip / tar.gz Compression** | Reduces backup size with gzip (files) and tar.gz (folders) |
-| **🔌 USB Hardware Lock** | Register a specific USB drive by hardware signature (VID/PID/Serial) |
-| **⚡ Plug & Play Auto-Backup** | Automatically starts backup when your registered USB drive is plugged in |
-| **📂 Multi-Source Support** | Monitor multiple files and folders simultaneously, each with independent settings |
-| **🔄 Incremental Sync** | Manifest-based change detection — only syncs files that have actually changed |
-| **🔓 Decrypt & Restore** | Built-in module to decrypt `.vault` files and decompress `.gz` / `.tar.gz` archives |
-| **📝 Real-Time Activity Log** | Live log panel showing every operation, warning, and error |
-| **💾 Persistent Configuration** | All settings are saved automatically and restored on next launch |
+| ** Automated Backup** | Real-time file system monitoring with automatic sync on change detection |
+| ** AES-256-CBC Encryption** | Military-grade encryption for all backed-up files and folders |
+| ** Gzip / tar.gz Compression** | Reduces backup size with gzip (files) and tar.gz (folders) |
+| ** USB Hardware Lock** | Register a specific USB drive by hardware signature (VID/PID/Serial) |
+| ** Plug & Play Auto-Backup** | Automatically starts backup when your registered USB drive is plugged in |
+| ** Multi-Source Support** | Monitor multiple files and folders simultaneously, each with independent settings |
+| ** Incremental Sync** | Manifest-based change detection — only syncs files that have actually changed |
+| ** Decrypt & Restore** | Built-in module to decrypt `.vault` files and decompress `.gz` / `.tar.gz` archives |
+| ** Real-Time Activity Log** | Live log panel showing every operation, warning, and error |
+| ** Persistent Configuration** | All settings are saved automatically and restored on next launch |
 
 ---
 
-## 📸 Screenshots
+##  Screenshots
 
 > _Launch the app with `npm start` to see the UI in action._
 
@@ -34,7 +34,7 @@ The application features a modern dark-themed UI with four main modules accessib
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 
 Before you begin, make sure you have the following installed:
 
@@ -48,7 +48,7 @@ Before you begin, make sure you have the following installed:
 
 ---
 
-## 🚀 Installation
+##  Installation
 
 ### 1. Clone the Repository
 
@@ -73,7 +73,7 @@ The Zephon window will open and you can begin configuring your backups.
 
 ---
 
-## 🏁 Getting Started
+##  Getting Started
 
 Here's a quick 5-step guide to get your first backup running:
 
@@ -89,7 +89,7 @@ Once activated, the **Shield** indicator in the sidebar turns green, and Zephon 
 
 ---
 
-## 📚 Usage Guide
+##  Usage Guide
 
 ### 1. Backup Module
 
@@ -140,10 +140,10 @@ Depending on your toggle settings, Zephon uses one of three backup strategies:
 
 | Encryption | Compression | Output Format | Description |
 |---|---|---|---|
-| ✅ On | ✅ On | `.vault` | Encrypted + compressed vault file |
-| ✅ On | ❌ Off | `.vault` | Encrypted vault file (no compression) |
-| ❌ Off | ✅ On | `.tar.gz` / `.gz` | Compressed archive (folders → tar.gz, files → gz) |
-| ❌ Off | ❌ Off | Raw copy | Plain file/folder copy to target |
+|  On |  On | `.vault` | Encrypted + compressed vault file |
+|  On |  Off | `.vault` | Encrypted vault file (no compression) |
+|  Off |  On | `.tar.gz` / `.gz` | Compressed archive (folders → tar.gz, files → gz) |
+|  Off |  Off | Raw copy | Plain file/folder copy to target |
 
 ---
 
@@ -192,9 +192,9 @@ Decrypt `.vault` files or decompress `.gz` / `.tar.gz` archives. Navigate to it 
 
 | Input File | Password Required | Output |
 |---|---|---|
-| `*.vault` | ✅ Yes | Decrypted file or folder |
-| `*.tar.gz` | ❌ No | Extracted folder |
-| `*.gz` | ❌ No | Decompressed file |
+| `*.vault` |  Yes | Decrypted file or folder |
+| `*.tar.gz` |  No | Extracted folder |
+| `*.gz` |  No | Decompressed file |
 
 ---
 
@@ -322,9 +322,9 @@ npm run build
 
 This generates an MSI installer in the `dist/` directory with:
 
-- ✅ Per-machine installation
-- ✅ Desktop shortcut
-- ✅ Custom icon
+-  Per-machine installation
+-  Desktop shortcut
+-  Custom icon
 
 ### Build Configuration
 
@@ -363,7 +363,7 @@ Configuration is loaded automatically on startup and saved whenever settings cha
 
 ---
 
-## 🔐 Security Details
+##  Security Details
 
 | Aspect | Implementation |
 |---|---|
